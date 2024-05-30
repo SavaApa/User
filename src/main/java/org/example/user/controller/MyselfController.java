@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class MyselfController {
 
     @PostMapping("/analyze")
     public ResponseEntity<String> analyzeMyself(@RequestBody Map<String, Object> analyzeData) {
-        String userId = "UserId1";
+        String userId = UUID.randomUUID().toString();
         DocumentReference docRef = db.collection("users").document(userId).collection("analyze").document("latest");
         docRef.set(analyzeData);
         return ResponseEntity.ok("Analysis data saved successfully.");

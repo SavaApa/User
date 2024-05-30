@@ -37,7 +37,7 @@ public class AnyoneController {
 
         String fileName = UUID.randomUUID() + "-" + foto.getOriginalFilename();
         BlobInfo blobInfo = storage.create(
-                BlobInfo.newBuilder("your-bucket-name", fileName).build(),
+                BlobInfo.newBuilder("name", fileName).build(),
                 foto.getInputStream()
         );
         String photoUrl = blobInfo.getMediaLink();
